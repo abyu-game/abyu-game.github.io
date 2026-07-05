@@ -7,41 +7,41 @@
     <style>
         body {
             background: #0a0a0a;
-            color: #00ff88;
-            font-family: Arial;
+            color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px 20px;
+            padding: 20px;
+            margin: 0;
         }
         h1 {
+            color: #00ff88;
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin: 30px 0;
         }
-        .team {
+        .games {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .game {
             background: #1a1a2e;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px auto;
-            max-width: 600px;
             border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
         }
-        .name {
-            font-size: 1.5rem;
-            margin: 15px 0;
-            color: #00ffff;
+        .game:hover {
+            background: #00ff88;
+            color: black;
         }
-    </style>
-</head>
-<body>
-    <h1>ABYU GAME</h1>
-    <p>Website is Working! 🔥</p>
-    
-    <div class="team">
-        <h2>Our Team</h2>
-        <div class="name">Founder: Yugank Vishnoi</div>
-        <div class="name">Co-Founder: Abhinav Singh</div>
-        <div class="name">Investor: Akshat Sharma</div>
-    </div>
-    
-    <p style="margin-top:40px;">Games Coming Soon...</p>
-</body>
-</html>
+        .emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .about {
+            background: #1a1a2e;
+            max-width: 600px;
+            margin: 50
