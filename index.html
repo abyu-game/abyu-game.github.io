@@ -1,5 +1,4 @@
-            
-     <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +35,7 @@
     </div>
 
     <div class="container">
-        <div class="stats">🎮 Total Games: <span id="totalGames">10</span> | More Coming Soon</div>
+        <div class="stats">🎮 Total Games: <span id="totalGames">20</span> | More Coming Soon</div>
         <div class="games-grid" id="gamesList"></div>
     </div>
 
@@ -66,7 +65,17 @@
             {id: 7, name: "Abyu Color Match", emoji: "🎨", type: "color"},
             {id: 8, name: "Abyu Math Quiz", emoji: "➕", type: "math"},
             {id: 9, name: "Abyu Reaction Test", emoji: "⚡", type: "reaction"},
-            {id: 10, name: "Abyu Rock Paper", emoji: "✂️", type: "rps"}
+            {id: 10, name: "Abyu Rock Paper", emoji: "✂️", type: "rps"},
+            {id: 11, name: "Abyu Flappy Bird", emoji: "🐦", type: "flappy"},
+            {id: 12, name: "Abyu Breakout", emoji: "🧱", type: "breakout"},
+            {id: 13, name: "Abyu Pong", emoji: "🏓", type: "pong"},
+            {id: 14, name: "Abyu 2048", emoji: "🔢", type: "2048"},
+            {id: 15, name: "Abyu Maze Runner", emoji: "🌀", type: "maze"},
+            {id: 16, name: "Abyu Tower Stack", emoji: "🗼", type: "tower"},
+            {id: 17, name: "Abyu Dino Jump", emoji: "🦖", type: "dino"},
+            {id: 18, name: "Abyu Bubble Pop", emoji: "🫧", type: "bubble"},
+            {id: 19, name: "Abyu Sudoku", emoji: "🧩", type: "sudoku"},
+            {id: 20, name: "Abyu Car Racing", emoji: "🏎️", type: "racing"}
         ];
 
         const grid = document.getElementById('gamesList');
@@ -94,6 +103,16 @@
             else if(type === 'math') loadMathGame(container);
             else if(type === 'reaction') loadReactionGame(container);
             else if(type === 'rps') loadRPSGame(container);
+            else if(type === 'flappy') loadFlappyGame(container);
+            else if(type === 'breakout') loadBreakoutGame(container);
+            else if(type === 'pong') loadPongGame(container);
+            else if(type === '2048') load2048Game(container);
+            else if(type === 'maze') loadMazeGame(container);
+            else if(type === 'tower') loadTowerGame(container);
+            else if(type === 'dino') loadDinoGame(container);
+            else if(type === 'bubble') loadBubbleGame(container);
+            else if(type === 'sudoku') loadSudokuGame(container);
+            else if(type === 'racing') loadRacingGame(container);
         }
 
         function closeGame() {
@@ -103,11 +122,12 @@
 
         // GAME 1: SNAKE
         function loadSnakeGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU SNAKE</h2><div class="score">Score: <span id="snakeScore">0</span></div><canvas id="snakeCanvas" width="400" height="400"></canvas><div class="controls"><button class="btn" onclick="startSnake()">START</button><p style="color:#888;margin-top:10px;">Arrow Keys</p></div>`;
+            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU SNAKE</h2><div class="score">Score: <span id="snakeScore">0</span></div><canvas id="snakeCanvas" width="400" height="400"></canvas><div class="controls"><button class="btn" onclick="startSnake()">START</button><p style="color:#888;margin-top:10px;">Arrow Keys / Tap</p></div>`;
             window.startSnake = function() {
                 const canvas = document.getElementById('snakeCanvas'), ctx = canvas.getContext('2d'), box = 20;
                 let snake = [{x: 9*box, y: 10*box}], food = {x: Math.floor(Math.random()*19+1)*box, y: Math.floor(Math.random()*19+1)*box}, d, score = 0;
                 document.onkeydown = (e) => { if(e.keyCode==37&&d!="RIGHT")d="LEFT"; else if(e.keyCode==38&&d!="DOWN")d="UP"; else if(e.keyCode==39&&d!="LEFT")d="RIGHT"; else if(e.keyCode==40&&d!="UP")d="DOWN"; };
+                canvas.ontouchstart = (e) => { let t=e.touches[0],x=t.clientX-canvas.offsetLeft,y=t.clientY-canvas.offsetTop; if(Math.abs(x-snake[0].x)>Math.abs(y-snake[0].y)){d=x<snake[0].x&&d!="RIGHT"?"LEFT":x>snake[0].x&&d!="LEFT"?"RIGHT":d;} else {d=y<snake[0].y&&d!="DOWN"?"UP":y>snake[0].y&&d!="UP"?"DOWN":d;}};
                 function draw() {
                     ctx.fillStyle='#000'; ctx.fillRect(0,0,400,400);
                     for(let i=0;i<snake.length;i++){ ctx.fillStyle=i==0?'#00ff88':'#00ffff'; ctx.fillRect(snake[i].x,snake[i].y,box,box); }
@@ -137,7 +157,7 @@
 
         // GAME 3: CLICKER
         function loadClickerGame(container) {
-            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU CLICKER</h2><div class="score">Score: <span id="clickScore">0</span></div><div class="controls"><button class="btn" style="font-size:2rem;padding:30px 50px;" onclick="clickBtn()">CLICK ME!</button></div><p style="text-align:center;color:#888;">Click as fast as you can!</p>`;
+            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU CLICKER</h2><div class="score">Score: <span id="clickScore">0</span></div><div class="controls"><button class="btn" style="font-size:2rem;padding:30px 50px;" onclick="clickBtn()">TAP ME!</button></div><p style="text-align:center;color:#888;">Tap as fast as you can!</p>`;
             let clickScore=0; window.clickBtn=()=>{clickScore++;document.getElementById('clickScore').innerText=clickScore;};
         }
 
@@ -156,8 +176,8 @@
 
         // GAME 6: DODGE CAR
         function loadDodgeGame(container) {
-            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU DODGE CAR</h2><div class="score">Score: <span id="dodgeScore">0</span></div><canvas id="dodgeCanvas" width="400" height="500"></canvas><div class="controls"><button class="btn" onclick="startDodge()">START</button><p style="color:#888;">Arrow Keys to Move</p></div>`;
-            window.startDodge=()=>{ const canvas=document.getElementById('dodgeCanvas'),ctx=canvas.getContext('2d'); let car={x:175,y:400,w:50,h:80},obstacles=[],score=0,speed=3,keys={}; document.onkeydown=e=>keys[e.keyCode]=true; document.onkeyup=e=>keys[e.keyCode]=false;
+            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU DODGE CAR</h2><div class="score">Score: <span id="dodgeScore">0</span></div><canvas id="dodgeCanvas" width="400" height="500"></canvas><div class="controls"><button class="btn" onclick="startDodge()">START</button><p style="color:#888;">Drag/Touch to Move</p></div>`;
+            window.startDodge=()=>{ const canvas=document.getElementById('dodgeCanvas'),ctx=canvas.getContext('2d'); let car={x:175,y:400,w:50,h:80},obstacles=[],score=0,speed=3,keys={}; canvas.ontouchmove=e=>{let rect=canvas.getBoundingClientRect();car.x=e.touches[0].clientX-rect.left-car.w/2}; document.onkeydown=e=>keys[e.keyCode]=true; document.onkeyup=e=>keys[e.keyCode]=false;
             function draw(){ ctx.fillStyle='#1a1a1a';ctx.fillRect(0,0,400,500); ctx.fillStyle='#00ff88';ctx.fillRect(car.x,car.y,car.w,car.h); if(keys[37]&&car.x>0)car.x-=5; if(keys[39]&&car.x<350)car.x+=5; if(Math.random()<0.03)obstacles.push({x:Math.random()*350,y:-50,w:50,h:50}); ctx.fillStyle='#ff0080'; obstacles=obstacles.filter(o=>{o.y+=speed;ctx.fillRect(o.x,o.y,o.w,o.h); if(o.x<car.x+car.w&&o.x+o.w>car.x&&o.y<car.y+car.h&&o.y+o.h>car.y){clearInterval(currentGame);alert('Crash! Score: '+score);return false;} return o.y<500; }); score++; document.getElementById('dodgeScore').innerText=score; if(score%500===0)speed+=0.5; }
             clearInterval(currentGame); car={x:175,y:400,w:50,h:80}; obstacles=[]; score=0; currentGame=setInterval(draw,20); };
         }
@@ -184,7 +204,7 @@
         function loadReactionGame(container) {
             container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU REACTION TEST</h2><div id="reactBox" style="width:300px;height:300px;margin:20px auto;background:#ff0080;border:3px solid #00ff88;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;"></div><p id="reactMsg" style="text-align:center;color:#00ff88;font-size:1.2rem;"></p><div class="controls"><button class="btn" onclick="startReact()">START</button></div>`;
             let startTime,waiting=false;
-            window.startReact=()=>{ const box=document.getElementById('reactBox'); box.style.background='#ff0080'; box.innerText='Wait for GREEN...'; document.getElementById('reactMsg').innerText=''; waiting=true; setTimeout(()=>{ if(!waiting)return; box.style.background='#00ff88'; box.innerText='CLICK NOW!'; startTime=Date.now(); waiting=false; },Math.random()*3000+1000); box.onclick=()=>{ if(waiting){box.style.background='#ff0000';box.innerText='Too Early!';document.getElementById('reactMsg').innerText='You clicked too soon!';waiting=false;}else if(startTime){ const time=Date.now()-startTime; document.getElementById('reactMsg').innerText=`Your time: ${time}ms`; box.innerText='Click START to try again'; startTime=null; } }; };
+            window.startReact=()=>{ const box=document.getElementById('reactBox'); box.style.background='#ff0080'; box.innerText='Wait for GREEN...'; document.getElementById('reactMsg').innerText=''; waiting=true; setTimeout(()=>{ if(!waiting)return; box.style.background='#00ff88'; box.innerText='TAP NOW!'; startTime=Date.now(); waiting=false; },Math.random()*3000+1000); box.onclick=()=>{ if(waiting){box.style.background='#ff0000';box.innerText='Too Early!';document.getElementById('reactMsg').innerText='You tapped too soon!';waiting=false;}else if(startTime){ const time=Date.now()-startTime; document.getElementById('reactMsg').innerText=`Your time: ${time}ms`; box.innerText='Tap START to try again'; startTime=null; } }; };
         }
 
         // GAME 10: ROCK PAPER SCISSORS
@@ -193,6 +213,14 @@
             let pScore=0,cScore=0; const choices={rock:'🗿',paper:'📄',scissors:'✂️'};
             window.playRPS=(player)=>{ const comp=['rock','paper','scissors'][Math.floor(Math.random()*3)]; document.getElementById('rpsYou').innerText=choices[player]; document.getElementById('rpsComputer').innerText=choices[comp]; let result=''; if(player===comp)result='Draw!'; else if((player==='rock'&&comp==='scissors')||(player==='paper'&&comp==='rock')||(player==='scissors'&&comp==='paper')){result='You Win!';pScore++;} else{result='Computer Wins!';cScore++;} document.getElementById('rpsResult').innerText=result; document.getElementById('rpsPlayer').innerText=pScore; document.getElementById('rpsComp').innerText=cScore; };
         }
-    </script>
-</body>
-</html>       
+
+        // GAME 11: FLAPPY BIRD
+        function loadFlappyGame(container) {
+            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU FLAPPY BIRD</h2><div class="score">Score: <span id="flappyScore">0</span></div><canvas id="flappyCanvas" width="400" height="500"></canvas><div class="controls"><button class="btn" onclick="startFlappy()">START</button><p style="color:#888;">Tap to Jump</p></div>`;
+            window.startFlappy=()=>{ const c=document.getElementById('flappyCanvas'),x=c.getContext('2d'); let b={x:80,y:250,v:0},p=[],s=0,g=0.5,game=true; c.onclick=()=>b.v=-8; c.ontouchstart=()=>b.v=-8; function draw(){ if(!game)return; x.fillStyle='#1a1a2e';x.fillRect(0,0,400,500); b.v+=g;b.y+=b.v; x.fillStyle='#00ff88';x.beginPath();x.arc(b.x,b.y,15,0,7);x.fill(); if(Math.random()<0.02)p.push({x:400,h:Math.random()*200+100}); x.fillStyle='#ff0080'; p=p.filter(o=>{o.x-=3;x.fillRect(o.x,0,50,o.h);x.fillRect(o.x,o.h+150,50,500); if(b.x+15>o.x&&b.x-15<o.x+50&&(b.y-15<o.h||b.y+15>o.h+150)){game=false;alert('Game Over! Score: '+s);return false;} return o.x>-50;}); s++;document.getElementById('flappyScore').innerText=s; if(b.y>485||b.y<15){game=false;alert('Game Over! Score: '+s);return;} } clearInterval(currentGame); game=true;b={x:80,y:250,v:0};p=[];s=0; currentGame=setInterval(draw,20); };
+        }
+
+        // GAME 12: BREAKOUT
+        function loadBreakoutGame(container) {
+            container.innerHTML=`<h2 style="color:#00ffff;text-align:center;">ABYU BREAKOUT</h2><div class="score">Score: <span id="breakScore">0</span></div><canvas id="breakCanvas" width="400" height="500"></canvas><div class="controls"><button class="btn" onclick="startBreakout()">START</button><p style="color:#888;">Drag to Move</p></div>`;
+            window.startBreakout=()=>{ const c=document.getElementById('breakCanvas'),x=c.getContext('2d'); let ball={x:200,y:400,vx:3,vy:-3},paddle={x:150,y:470,w:100},bricks=[],score=0,game=true; for(let i=0;i<5;i++)for(let j=0;j<8;j++)bricks.push({x:j*50+5,y:i*30+50,w:45,h:25,hit:false}); c.ontouchmove=e=>{let rect=c.getBoundingClientRect();paddle.x=e.touches[0].clientX-rect.left-paddle.w/2}; function draw(){ if(!game)return; x.fillStyle='#000';x.fillRect(0,0,400,500); x.fillStyle='#00ff88';x.fillRect(paddle.x,paddle.y,paddle.w,15); x.beginPath();x.arc(ball.x,ball.y,10,0,7);x.fill(); ball.x+=ball.vx;ball.y+=ball.vy; if(ball.x<10||ball.x>390)ball.vx*=-1; if(ball.y<10)ball.vy*=-1; if(ball.y>480){game=false;alert('Game Over! Score: '+score);return;} if(ball.y>460&&ball.x>paddle.x&&ball.x<paddle.x+paddle.w)ball.vy=-Math.abs(ball.vy); x.fillStyle='#ff0080'; bricks.forEach(b=>{if(!b.hit){x.fillRect(b.x,b.y,b.w,b.h); if(ball.x>b.x&&ball         
