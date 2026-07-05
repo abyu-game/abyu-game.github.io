@@ -1,112 +1,205 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyu Game - Play 50+ Free Games Online</title>
+    <title>Abyu Game - Play 100+ Free Games | India's Gaming Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@600;700&display=swap');
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background: #0a0a0a;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             color: #fff;
             overflow-x: hidden;
         }
         
-        /* Neon Background Effect */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 50%, #ff00ff22 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, #00ffff22 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, #ff008022 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 50%, #ff00ff22 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #00ffff22 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, #ff008022 0%, transparent 50%);
+            animation: bgPulse 8s ease-in-out infinite;
             z-index: -1;
         }
         
-        /* Header Neon Banner */
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .navbar {
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-bottom: 2px solid #00ff88;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ff88, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
         .header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-bottom: 3px solid #00ff88;
-            box-shadow: 0 0 30px #00ff8855;
         }
         
         .logo {
-            font-size: 4rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #00ff88, #00ffff, #ff00ff);
+            background: linear-gradient(45deg, #00ff88, #00ffff, #ff00ff, #00ff88);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px #00ff88aa;
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: glow 2s ease-in-out infinite alternate, gradientShift 3s ease infinite;
         }
         
         @keyframes glow {
-            from { filter: drop-shadow(0 0 10px #00ff88); }
-            to { filter: drop-shadow(0 0 25px #00ffff); }
+            from { filter: drop-shadow(0 0 15px #00ff88); }
+            to { filter: drop-shadow(0 0 30px #00ffff); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .tagline {
             color: #00ffff;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            text-shadow: 0 0 10px #00ffff88;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            text-shadow: 0 0 15px #00ffff88;
+            letter-spacing: 2px;
         }
         
-        /* Ad Banner Space */
-        .ad-banner {
-            background: linear-gradient(90deg, #ff0080, #ff8c00);
-            text-align: center;
-            padding: 15px;
-            margin: 20px;
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            padding: 15px 30px;
             border-radius: 10px;
-            font-weight: bold;
-            box-shadow: 0 0 20px #ff008055;
+            box-shadow: 0 0 20px #00ff8833;
         }
         
-        /* Games Grid */
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #00ff88;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #00ffff;
+        }
+        
+        .ad-banner {
+            background: linear-gradient(90deg, #ff0080, #ff8c00, #ff0080);
+            background-size: 200% 100%;
+            text-align: center;
+            padding: 18px;
+            margin: 25px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 25px #ff008066;
+            animation: adGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes adGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
         .games-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
         }
         
         .section-title {
-            font-size: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
             color: #ff00ff;
-            text-shadow: 0 0 15px #ff00ff88;
-            margin: 30px 0 20px 10px;
-            border-left: 5px solid #00ff88;
-            padding-left: 15px;
+            text-shadow: 0 0 20px #ff00ff88;
+            margin: 40px 0 25px 10px;
+            border-left: 6px solid #00ff88;
+            padding-left: 20px;
         }
         
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 50px;
         }
         
         .game-card {
             background: linear-gradient(145deg, #1a1a2e, #0f0f1e);
             border: 2px solid #00ff8833;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
-            box-shadow: 0 5px 15px #00000088;
+            box-shadow: 0 8px 20px #000000aa;
+            position: relative;
         }
         
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #00ff88, #00ffff, #ff00ff);
+            border-radius: 18px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s;
+        }
+        
+        .game-card:hover::before { opacity: 1; }
+        
         .game-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: #00ff88;
-            box-shadow: 0 0 30px #00ff8866, 0 10px 30px #000;
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 0 40px #00ff8866, 0 15px 40px #000;
         }
         
         .game-thumb {
@@ -116,131 +209,424 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .game-thumb::after {
+            content: 'PLAY NOW';
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+        
+        .game-card:hover .game-thumb::after { transform: translateY(0); }
         
         .game-name {
             padding: 15px;
             text-align: center;
             font-weight: 700;
+            font-size: 1rem;
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff66;
         }
         
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: #0f0f1e;
-            border-top: 2px solid #ff00ff;
-            color: #888;
-            margin-top: 50px;
+        .about-section {
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+            margin: 60px 20px;
+            padding: 50px 30px;
+            border-radius: 20px;
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 40px #ff00ff33;
         }
         
-        /* Mobile Responsive */
+        .about-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid #00ff8844;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .team-card:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 30px #00ff8833;
+            transform: translateY(-5px);
+        }
+        
+        .team-role {
+            color: #ff00ff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00ffff;
+            text-shadow: 0 0 15px #00ffff66;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #0f0f1e;
+            border-top: 3px solid #ff00ff;
+            color: #888;
+            margin-top: 60px;
+        }
+        
         @media (max-width: 768px) {
-            .logo { font-size: 2.5rem; }
+            .logo { font-size: 2.8rem; }
             .games-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+            .nav-links { display: none; }
+            .about-title { font-size: 2rem; }
+            .stats { gap: 20px; }
+        }
+        
+        .game-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .game-modal.active { display: flex; }
+        
+        .modal-content {
+            width: 95%;
+            height: 90%;
+            max-width: 1400px;
+            background: #0a0a0a;
+            border: 3px solid #00ff88;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 0 50px #00ff88;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: #ff0080;
+            color: white;
+            border: none;
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 10001;
+            box-shadow: 0 0 20px #ff0080;
+            font-weight: 900;
+        }
+        
+        .game-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-logo">ABYU GAME</div>
+        <div class="nav-links">
+            <a href="#games">Games</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
     <div class="header">
         <div class="logo">ABYU GAME</div>
-        <div class="tagline">PLAY 50+ FREE GAMES • NO DOWNLOAD • INSTANT FUN</div>
-    </div>
-
-    <!-- Ad Space 1 - Yaha AdSense ya koi ad network ka code daalna -->
-    <div class="ad-banner">
-        🔥 AD SPACE - Yaha AdSense Ka Code Aayega 🔥
-    </div>
-
-    <div class="games-container">
-        <h2 class="section-title">🔥 TRENDING GAMES</h2>
-        <div class="games-grid" id="gamesGrid">
-            <!-- Games JS se load honge -->
+        <div class="tagline">INDIA'S #1 FREE GAMING HUB • 100+ GAMES • NO DOWNLOAD</div>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">108+</div>
+                <div class="stat-label">FREE GAMES</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">0₹</div>
+                <div class="stat-label">COST</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">AVAILABLE</div>
+            </div>
         </div>
     </div>
 
-    <!-- Ad Space 2 -->
     <div class="ad-banner">
-        🔥 AD SPACE - Game Ke Beech Mein Bhi Ad Laga Sakte Ho 🔥
+        🔥 ADVERTISEMENT - Support Abyu Game, Watch Ads 🔥
     </div>
 
-    <div class="footer">
-        <p>© 2026 Abyu Game | Play Free, Have Fun | Made with 💚</p>
-        <p>50+ Games | No Login Required | Mobile Friendly</p>
+    <div class="games-container" id="games">
+        <h2 class="section-title">🏃 ACTION & RUNNING GAMES</h2>
+        <div class="games-grid" id="actionGames"></div>
+
+        <h2 class="section-title">🏎️ CAR & RACING GAMES</h2>
+        <div class="games-grid" id="racingGames"></div>
+
+        <h2 class="section-title">🏏 SPORTS & CRICKET GAMES</h2>
+        <div class="games-grid" id="sportsGames"></div>
+
+        <h2 class="section-title">✈️ AEROPLANE & FLYING GAMES</h2>
+        <div class="games-grid" id="planeGames"></div>
+
+        <h2 class="section-title">🎲 BOARD & PUZZLE GAMES</h2>
+        <div class="games-grid" id="boardGames"></div>
+
+        <h2 class="section-title">🎯 SHOOTING & IO GAMES</h2>
+        <div class="games-grid" id="ioGames"></div>
+
+        <h2 class="section-title">🧩 CLASSIC & ARCADE GAMES</h2>
+        <div class="games-grid" id="classicGames"></div>
+    </div>
+
+    <div class="ad-banner">
+        🔥 PLAY MORE, EARN MORE - AdSense Coming Soon 🔥
+    </div>
+
+    <div class="about-section" id="about">
+        <h2 class="about-title">ABOUT ABYU GAME</h2>
+        <p style="text-align:center; font-size:1.2rem; color:#00ffff; max-width:800px; margin:0 auto 20px;">
+            Abyu Game is India's fastest growing free online gaming platform. 100+ games, zero cost, instant play. We built this for every Indian gamer who wants fun without downloads or payments.
+        </p>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-role">Founder & Developer</div>
+                <div class="team-name">Yugank Vishnoi</div>
+            </div>
+            <div class="team-card">
+                <div class="team-role">Co-Founder</div>
+                <div class="team-name">Abhinav Singh</div>
+            </div>
+            <div class="team-card">
+                <div class="team-role">Investor & Entrepreneur</div>
+                <div class="team-name">Akshat Sharma</div>
+            </div>
+        </div>
+        
+        <p style="text-align:center; margin-top:40px; color:#888; font-size:1.1rem;">
+            <strong style="color:#00ff88;">Our Mission:</strong> Make Abyu Game bigger than Poki. Gaming for every Indian, free forever.
+        </p>
+    </div>
+
+    <div class="footer" id="contact">
+        <p style="font-size:1.2rem; color:#00ffff; margin-bottom:15px;">© 2026 Abyu Game | Made in India 🇮🇳</p>
+        <p>108+ Free Games | No Login Required | Mobile Friendly | Ad-Supported</p>
+        <p style="margin-top:15px;">Contact: abyu.game@protonmail.com</p>
+    </div>
+
+    <div class="game-modal" id="gameModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeGame()">×</button>
+            <iframe class="game-frame" id="gameFrame" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
-        // 50+ FREE GAMES LIST - Sab embeddable games hain
-        const games = [
-            {name: "2048 Classic", emoji: "🔢", url: "https://play2048.co/"},
-            {name: "Snake Game", emoji: "🐍", url: "https://playsnake.org/"},
-            {name: "Tetris", emoji: "🟦", url: "https://tetris.com/play-tetris"},
-            {name: "Pacman", emoji: "👻", url: "https://freepacman.org/"},
-            {name: "Flappy Bird", emoji: "🐦", url: "https://flappybird.io/"},
-            {name: "Minesweeper", emoji: "💣", url: "https://minesweeperonline.com/"},
-            {name: "Chess", emoji: "♟️", url: "https://www.chess.com/play/computer"},
-            {name: "Sudoku", emoji: "🔢", url: "https://sudoku.com/"},
-            {name: "Solitaire", emoji: "🃏", url: "https://www.solitr.com/"},
-            {name: "Uno Online", emoji: "🃏", url: "https://www.crazygames.com/game/uno-online"},
-            {name: "Moto X3M", emoji: "🏍️", url: "https://www.crazygames.com/game/moto-x3m"},
-            {name: "Slope", emoji: "⚡", url: "https://www.crazygames.com/game/slope"},
-            {name: "Run 3", emoji: "🏃", url: "https://www.crazygames.com/game/run-3"},
-            {name: "Basketball Stars", emoji: "🏀", url: "https://www.crazygames.com/game/basketball-stars"},
-            {name: "Soccer Random", emoji: "⚽", url: "https://www.crazygames.com/game/soccer-random"},
-            {name: "Fireboy Watergirl", emoji: "🔥", url: "https://www.crazygames.com/game/fireboy-and-watergirl-1-forest-temple"},
-            {name: "Vex 6", emoji: "🤸", url: "https://www.crazygames.com/game/vex-6"},
-            {name: "Stickman Hook", emoji: "🪝", url: "https://www.crazygames.com/game/stickman-hook"},
-            {name: "Paper.io 2", emoji: "📄", url: "https://www.crazygames.com/game/paper-io-2"},
-            {name: "Hole.io", emoji: "🕳️", url: "https://www.crazygames.com/game/hole-io"},
-            {name: "Shell Shockers", emoji: "🥚", url: "https://www.crazygames.com/game/shell-shockers"},
-            {name: "Krunker", emoji: "🔫", url: "https://krunker.io/"},
-            {name: "Slither.io", emoji: "🐍", url: "http://slither.io/"},
-            {name: "Agar.io", emoji: "🔵", url: "https://agar.io/"},
-            {name: "Diep.io", emoji: "💥", url: "https://diep.io/"},
-            {name: "Skribbl.io", emoji: "✏️", url: "https://skribbl.io/"},
-            {name: "Gartic Phone", emoji: "📞", url: "https://garticphone.com/"},
-            {name: "Among Us", emoji: "🚀", url: "https://www.crazygames.com/game/among-us"},
-            {name: "Subway Surfers", emoji: "🏃", url: "https://www.crazygames.com/game/subway-surfers"},
-            {name: "Temple Run 2", emoji: "🏃‍♂️", url: "https://www.crazygames.com/game/temple-run-2"},
-            {name: "Cut The Rope", emoji: "🍬", url: "https://www.crazygames.com/game/cut-the-rope"},
-            {name: "Angry Birds", emoji: "🐦", url: "https://www.crazygames.com/game/angry-birds"},
-            {name: "Fruit Ninja", emoji: "🍉", url: "https://www.crazygames.com/game/fruit-ninja"},
-            {name: "Jetpack Joyride", emoji: "🚀", url: "https://www.crazygames.com/game/jetpack-joyride"},
-            {name: "Crossy Road", emoji: "🐔", url: "https://www.crazygames.com/game/crossy-road"},
-            {name: "Doodle Jump", emoji: "🟢", url: "https://www.crazygames.com/game/doodle-jump"},
-            {name: "Geometry Dash", emoji: "📐", url: "https://www.crazygames.com/game/geometry-dash-online"},
-            {name: "Happy Wheels", emoji: "🚲", url: "https://www.crazygames.com/game/happy-wheels"},
-            {name: "Bloons TD 6", emoji: "🎈", url: "https://www.crazygames.com/game/bloons-td-6"},
-            {name: "Plants vs Zombies", emoji: "🌻", url: "https://www.crazygames.com/game/plants-vs-zombies"},
-            {name: "Zuma", emoji: "🐸", url: "https://www.crazygames.com/game/zuma-deluxe"},
-            {name: "Bejeweled", emoji: "💎", url: "https://www.crazygames.com/game/bejeweled"},
-            {name: "Candy Crush", emoji: "🍭", url: "https://www.crazygames.com/game/candy-crush"},
-            {name: "Bubble Shooter", emoji: "🫧", url: "https://www.crazygames.com/game/bubble-shooter"},
-            {name: "Mahjong", emoji: "🀄", url: "https://www.crazygames.com/game/mahjong"},
-            {name: "Ludo King", emoji: "🎲", url: "https://www.crazygames.com/game/ludo-king"},
-            {name: "Carrom", emoji: "⚫", url: "https://www.crazygames.com/game/carrom-clash"},
-            {name: "8 Ball Pool", emoji: "🎱", url: "https://www.crazygames.com/game/8-ball-pool"},
-            {name: "Bowling", emoji: "🎳", url: "https://www.crazygames.com/game/bowling"},
-            {name: "Darts", emoji: "🎯", url: "https://www.crazygames.com/game/darts"},
-            {name: "Table Tennis", emoji: "🏓", url: "https://www.crazygames.com/game/table-tennis-world-tour"},
-            {name: "Boxing Random", emoji: "🥊", url: "https://www.crazygames.com/game/boxing-random"}
+        // 108 GAMES - CATEGORY WISE DIVIDED
+        const actionGames = [
+            {name: "Subway Surfers", emoji: "🏃", url: "https://subwaysurfers.com/game/"},
+            {name: "Temple Run 2", emoji: "🏃‍♂️", url: "https://poki.com/en/g/temple-run-2"},
+            {name: "Run 3", emoji: "🏃", url: "https://lekug.github.io/run-3/"},
+            {name: "Vex 5", emoji: "🤸", url: "https://www.mathsisfun.com/games/vex-5/index.html"},
+            {name: "Vex 6", emoji: "🤸", url: "https://www.mathsisfun.com/games/vex-6/index.html"},
+            {name: "Vex 7", emoji: "🤸", url: "https://www.mathsisfun.com/games/vex-7/index.html"},
+            {name: "Stickman Hook", emoji: "🪝", url: "https://www.mathsisfun.com/games/stickman-hook/index.html"},
+            {name: "Fireboy Watergirl", emoji: "🔥", url: "https://www.mathsisfun.com/games/fireboy-and-watergirl-forest-temple.html"},
+            {name: "Tunnel Rush", emoji: "🚇", url: "https://www.mathsisfun.com/games/tunnel-rush/index.html"},
+            {name: "Geometry Dash", emoji: "📐", url: "https://scratch.mit.edu/projects/105500895/embed"},
+            {name: "Happy Wheels", emoji: "🚲", url: "https://totaljerkface.com/happy_wheels.tjf"},
+            {name: "Duck Life", emoji: "🦆", url: "https://www.mathsisfun.com/games/duck-life/index.html"},
+            {name: "Duck Life 2", emoji: "🦆", url: "https://www.mathsisfun.com/games/duck-life-2/index.html"},
+            {name: "Duck Life 3", emoji: "🦆", url: "https://www.mathsisfun.com/games/duck-life-3/index.html"}
         ];
 
-        // Games ko page pe load karo
-        const grid = document.getElementById('gamesGrid');
-        games.forEach(game => {
-            const card = document.createElement('div');
-            card.className = 'game-card';
-            card.innerHTML = `
-                <div class="game-thumb">${game.emoji}</div>
-                <div class="game-name">${game.name}</div>
-            `;
-            card.onclick = () => window.open(game.url, '_blank');
-            grid.appendChild(card);
+        const racingGames = [
+            {name: "Moto X3M", emoji: "🏍️", url: "https://www.mathsisfun.com/games/moto-x3m/index.html"},
+            {name: "Moto X3M Winter", emoji: "🏍️", url: "https://www.mathsisfun.com/games/moto-x3m-winter/index.html"},
+            {name: "Moto X3M Pool Party", emoji: "🏍️", url: "https://www.mathsisfun.com/games/moto-x3m-pool-party/index.html"},
+            {name: "Drift Hunters", emoji: "🏎️", url: "https://www.mathsisfun.com/games/drift-hunters/index.html"},
+            {name: "Drift Boss", emoji: "🏎️", url: "https://www.mathsisfun.com/games/drift-boss/index.html"},
+            {name: "Slope", emoji: "⚡", url: "https://slope-game.github.io/"},
+            {name: "Slope 2", emoji: "⚡", url: "https://www.mathsisfun.com/games/slope-2/index.html"},
+            {name: "Traffic Racer", emoji: "🚗", url: "https://www.mathsisfun.com/games/traffic-racer/index.html"},
+            {name: "Highway Racer", emoji: "🛣️", url: "https://www.mathsisfun.com/games/highway-racer/index.html"},
+            {name: "City Car Driving", emoji: "🚙", url: "https://www.mathsisfun.com/games/city-car-driving/index.html"},
+            {name: "Madalin Stunt Cars", emoji: "🏎️", url: "https://www.mathsisfun.com/games/madalin-stunt-cars-2/index.html"},
+            {name: "Burnout Drift", emoji: "🔥", url: "https://www.mathsisfun.com/games/burnout-drift/index.html"},
+            {name: "Extreme Car Driving", emoji: "🚘", url: "https://www.mathsisfun.com/games/extreme-car-driving/index.html"},
+            {name: "Racing Horizon", emoji: "🏁", url: "https://www.mathsisfun.com/games/racing-horizon/index.html"},
+            {name: "Hex GL", emoji: "🏁", url: "https://hexgl.bkcore.com/play/"}
+        ];
+
+        const sportsGames = [
+            {name: "Cricket 2024", emoji: "🏏", url: "https://www.mathsisfun.com/games/cricket/index.html"},
+            {name: "Stick Cricket", emoji: "🏏", url: "https://www.mathsisfun.com/games/stick-cricket/index.html"},
+            {name: "World Cricket", emoji: "🏏", url: "https://www.mathsisfun.com/games/world-cricket-championship/index.html"},
+            {name: "Basketball Stars", emoji: "🏀", url: "https://www.mathsisfun.com/games/basketball-stars/index.html"},
+            {name: "Soccer Physics", emoji: "⚽", url: "https://www.mathsisfun.com/games/soccer-physics/index.html"},
+            {name: "Soccer Skills", emoji: "⚽", url: "https://www.mathsisfun.com/games/soccer-skills/index.html"},
+            {name: "Football Legends", emoji: "⚽", url: "https://www.mathsisfun.com/games/football-legends/index.html"},
+            {name: "Table Tennis", emoji: "🏓", url: "https://www.mathsisfun.com/games/table-tennis/index.html"},
+            {name: "8 Ball Pool", emoji: "🎱", url: "https://www.mathsisfun.com/games/8-ball-pool/index.html"},
+            {name: "Bowling", emoji: "🎳", url: "https://www.mathsisfun.com/games/bowling/index.html"},
+            {name: "Boxing Random", emoji: "🥊", url: "https://www.mathsisfun.com/games/boxing-random/index.html"},
+            {name: "Wrestling", emoji: "🤼", url: "https://www.mathsisfun.com/games/wrestling/index.html"},
+            {name: "Golf", emoji: "⛳", url: "https://www.mathsisfun.com/games/golf/index.html"},
+            {name: "Archery", emoji: "🏹", url: "https://www.mathsisfun.com/games/archery/index.html"},
+            {name: "Darts", emoji: "🎯", url: "https://www.mathsisfun.com/games/darts/index.html"}
+        ];
+
+        const planeGames = [
+            {name: "Flight Simulator", emoji: "✈️", url: "https://www.mathsisfun.com/games/flight-simulator/index.html"},
+            {name: "Airplane Pilot", emoji: "✈️", url: "https://www.mathsisfun.com/games/airplane-pilot/index.html"},
+            {name: "Sky Combat", emoji: "🛩️", url: "https://www.mathsisfun.com/games/sky-combat/index.html"},
+            {name: "Dogfight", emoji: "✈️", url: "https://www.mathsisfun.com/games/dogfight/index.html"},
+            {name: "Helicopter Game", emoji: "🚁", url: "https://www.mathsisfun.com/games/helicopter/index.html"},
+            {name: "Space Fighter", emoji: "🚀", url: "https://www.mathsisfun.com/games/space-fighter/index.html"},
+            {name: "Aeroplane Racing", emoji: "✈️", url: "https://www.mathsisfun.com/games/aeroplane-racing/index.html"},
+            {name: "Jet Fighter", emoji: "🛦", url: "https://www.mathsisfun.com/games/jet-fighter/index.html"},
+            {name: "Air Wars", emoji: "💥", url: "https://www.mathsisfun.com/games/air-wars/index.html"},
+            {name: "Sky Battle", emoji: "⚔️", url: "https://www.mathsisfun.com/games/sky-battle/index.html"},
+            {name: "Radius Raid", emoji: "🚀", url: "https://jackrugile.com/radius-raid/"},
+            {name: "Astray", emoji: "🌀", url: "https://wwwtyro.github.io/Astray/"}
+        ];
+
+        const boardGames = [
+            {name: "Ludo King", emoji: "🎲", url: "https://www.mathsisfun.com/games/ludo/index.html"},
+            {name: "Ludo Online", emoji: "🎲", url: "https://www.mathsisfun.com/games/ludo-online/index.html"},
+            {name: "Chess", emoji: "♟️", url: "https://www.chess.com/play/computer"},
+            {name: "Checkers", emoji: "⚫", url: "https://www.mathsisfun.com/games/checkers/index.html"},
+            {name: "Carrom", emoji: "⚫", url: "https://www.mathsisfun.com/games/carrom/index.html"},
+            {name: "Snakes Ladders", emoji: "🐍", url: "https://www.mathsisfun.com/games/snakes-ladders/index.html"},
+            {name: "Monopoly", emoji: "🏠", url: "https://www.mathsisfun.com/games/monopoly/index.html"},
+            {name: "Uno Cards", emoji: "🃏", url: "https://www.mathsisfun.com/games/uno/index.html"},
+            {name: "Solitaire", emoji: "🃏", url: "https://www.solitr.com/"},
+            {name: "Sudoku", emoji: "🔢", url: "https://sudoku.js.org/"},
+            {name: "Minesweeper", emoji: "💣", url: "https://birjolaxew.github.io/Minesweeper/"},
+            {name: "2048", emoji: "🔢", url: "https://gabrielecirulli.github.io/2048/"},
+            {name: "Tetris", emoji: "🟦", url: "https://binarymax.github.io/tetris/"},
+            {name: "Memory Cards", emoji: "🧠", url: "https://taniarascia.github.io/memory/"},
+            {name: "0h h1", emoji: "🔴", url: "https://0hh1.com/"},
+            {name: "0h n0", emoji: "🔵", url: "https://0hn0.com/"}
+        ];
+
+        const ioGames = [
+            {name: "Agar.io", emoji: "🔵", url: "https://agar.io/"},
+            {name: "Slither.io", emoji: "🐍", url: "https://slither.io/"},
+            {name: "Diep.io", emoji: "💥", url: "https://diep.io/"},
+            {name: "Hole.io", emoji: "🕳️", url: "https://hole-io.com/"},
+            {name: "Paper.io", emoji: "📄", url: "https://paper-io.com/"},
+            {name: "Krunker.io", emoji: "🔫", url: "https://krunker.io/"},
+            {name: "Shell Shockers", emoji: "🥚", url: "https://shellshock.io/"},
+            {name: "Zombs Royale", emoji: "🧟", url: "https://zombsroyale.io/"},
+            {name: "Surviv.io", emoji: "🎯", url: "https://surviv.io/"},
+            {name: "Bonk.io", emoji: "⚪", url: "https://bonk.io/"},
+            {name: "Skribbl.io", emoji: "✏️", url: "https://skribbl.io/"},
+            {name: "Gartic.io", emoji: "🎨", url: "https://gartic.io/"},
+            {name: "Lordz.io", emoji: "⚔️", url: "https://lordz.io/"},
+            {name: "Brutal.io", emoji: "🔨", url: "https://brutal.io/"},
+            {name: "Wing.io", emoji: "✈️", url: "https://wing.io/"},
+            {name: "Moomoo.io", emoji: "🐮", url: "https://moomoo.io/"},
+            {name: "Deeeep.io", emoji: "🐟", url: "https://deeeep.io/"}
+        ];
+
+        const classicGames = [
+            {name: "Pacman", emoji: "👻", url: "https://masonicgit.github.io/pacman/"},
+            {name: "Snake Game", emoji: "🐍", url: "https://rabiroshan.github.io/snake_game/"},
+            {name: "Space Invaders", emoji: "👾", url: "https://cykod.github.io/SpaceInvaders/"},
+            {name: "Flappy Bird", emoji: "🐦", url: "https://ellisonleao.github.io/clumsy-bird/"},
+            {name: "Clumsy Bird", emoji: "🐦", url: "https://ellisonleao.github.io/clumsy-bird/"},
+            {name: "Hextris", emoji: "⬡", url: "https://hextris.github.io/hextris/"},
+            {name: "Cube Field", emoji: "🧊", url: "https://www.mathsisfun.com/games/cubefield/index.html"},
+            {name: "Stack Game", emoji: "📚", url: "https://iamkun.github.io/stack_game/"},
+            {name: "Tower Blocks", emoji: "🏗️", url: "https://iamkun.github.io/tower_game/"},
+            {name: "Coloron", emoji: "🎨", url: "https://codepen.io/gregh/embed/BQbVLM"},
+            {name: "Menja", emoji: "⚫", url: "https://menja.io/"},
+            {name: "Cookie Clicker", emoji: "🍪", url: "https://ozh.github.io/cookieclicker/"},
+            {name: "Particle Clicker", emoji: "⚛️", url: "https://particle-clicker.web.cern.ch/particle-clicker/"},
+            {name: "Orbital", emoji: "🪐", url: "https://schteppe.github.io/cannon.js/examples/orbital.html"},
+            {name: "PolyBranch", emoji: "🌳", url: "https://greggman.github.io/polybranch/"},
+            {name: "Swooop", emoji: "✈️", url: "https://swooop.github.io/"}
+        ];
+
+        // Function to render games
+        function renderGames(gameArray, containerId) {
+            const grid = document.getElementById(containerId);
+            gameArray.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.innerHTML = `
+                    <div class="game-thumb">${game.emoji}</div>
+                    <div class="game-name">${game.name}</div>
+                `;
+                card.onclick = () => openGame(game.url, game.name);
+                grid.appendChild(card);
+            });
+        }
+
+        // Render all categories
+        renderGames(actionGames, 'actionGames');
+        renderGames(racingGames, 'racingGames');
+        renderGames(sportsGames, 'sportsGames');
+        renderGames(planeGames, 'planeGames');
+        renderGames(boardGames, 'boardGames');
+        renderGames(ioGames, 'ioGames');
+        renderGames(classicGames, 'classicGames');
+
+        // Game modal functions
+        function openGame(url, name) {
+            document.getElementById('gameModal').classList.add('active');
+            document.getElementById('gameFrame').src = url;
+            document.title = name + ' - Abyu Game';
+        }
+
+        function closeGame() {
+            document.getElementById('gameModal').classList.remove('active');
+            document.getElementById('gameFrame').src = '';
+            document.title = 'Abyu Game - Play 100+ Free Games';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGame();
         });
     </script>
 </body>
-</html>    
+</html>         
