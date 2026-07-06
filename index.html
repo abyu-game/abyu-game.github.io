@@ -1,255 +1,87 @@
- <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="A5rzSqAsqoMQ_-mg1dPPmFH8AZl_U9ye_c6ElYbrpoM"/>
-    <title>Abyu Game - 12 Original Online Games by Yugank Vishnoi</title>
-    <meta name="description" content="Play 12 original, fast, and fun arcade games built completely with clean code. Play Abyu Snake, Flappy Bird, Breakout, and more on Abyu Game by Yugank Vishnoi.">
-    <meta name="keywords" content="Abyu Game, Yugank Vishnoi, Online Games, Snake Game, Flappy Bird, Tic Tac Toe, Made in India Games">
-    <meta name="author" content="Yugank Vishnoi">
-    <meta name="robots" content="index, follow">
-       
-    <meta property="og:title" content="Abyu Game - 12 Original Games">
-    <meta property="og:description" content="100% Apna Code | Zero External Links. Play original mini-games instantly.">
-    <meta property="og:type" content="website">
-
+    <title>Abyu Game - 12 Original Games</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #05050a; 
-            color: #fff; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background-image: radial-gradient(circle at 50% 50%, #111122 0%, #05050a 100%);
-        }
-           
-        /* PREMIUM CYBERPUNK HEADER */
-        .header { 
-            background: rgba(10, 10, 25, 0.9);
-            padding: 50px 20px; 
-            text-align: center; 
-            border-bottom: 3px solid #00ff88; 
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.3), inset 0 -5px 20px rgba(0, 255, 136, 0.1);
-            position: relative;
-        }
-        .logo { 
-            font-size: 3.5rem; 
-            font-weight: 900; 
-            color: #fff; 
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-        }
-        .header p {
-            color: #ff007f;
-            font-size: 1.1rem;
-            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-           
-        .container { max-width: 1400px; margin: 0 auto; padding: 30px 20px; }
-           
-        .stats { 
-            text-align: center; 
-            color: #00ffff; 
-            font-size: 1.4rem; 
-            margin: 20px 0 40px 0; 
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            font-weight: bold;
-        }
-           
-        /* PREMIUM NEON GRID */
-        .games-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 25px; 
-            margin: 30px 0; 
-        }
-        .game-card { 
-            background: rgba(20, 20, 40, 0.6); 
-            border: 2px solid #ff007f; 
-            border-radius: 16px; 
-            padding: 30px 20px; 
-            text-align: center; 
-            cursor: pointer; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.15), inset 0 0 15px rgba(255, 0, 127, 0.05);
-        }
-        .game-card:nth-child(even) {
-            border-color: #00ffff;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15), inset 0 0 15px rgba(0, 255, 255, 0.05);
-        }
-        .game-card:hover { 
-            transform: translateY(-10px) scale(1.03); 
-            border-color: #00ff88; 
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), inset 0 0 20px rgba(0, 255, 136, 0.2); 
-        }
-        .game-emoji { 
-            font-size: 3.5rem; 
-            margin-bottom: 15px; 
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
-            transition: 0.3s;
-        }
-        .game-card:hover .game-emoji {
-            transform: scale(1.15);
-        }
-        .game-name { 
-            color: #fff; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
-            letter-spacing: 0.5px;
-        }
-           
-        /* MODAL & GAME WINDOW */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 10, 0.95); z-index: 9999; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .game-window { 
-            width: 95%; 
-            height: 90%; 
-            max-width: 850px; 
-            background: #0a0a15; 
-            border: 3px solid #00ff88; 
-            border-radius: 20px; 
-            position: relative; 
-            padding: 30px 20px; 
-            overflow-y: auto; 
-            box-shadow: 0 0 50px rgba(0, 255, 136, 0.4);
-        }
-        .close-btn { 
-            position: absolute; 
-            top: 15px; 
-            right: 15px; 
-            background: #ff007f; 
-            color: white; 
-            border: none; 
-            width: 45px; 
-            height: 45px; 
-            border-radius: 50%; 
-            font-size: 1.8rem; 
-            cursor: pointer; 
-            z-index: 10001; 
-            box-shadow: 0 0 15px #ff007f;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .close-btn:hover {
-            transform: scale(1.1);
-            background: #ff3399;
-        }
-        canvas { 
-            border: 3px solid #00ffff; 
-            background: #000; 
-            display: block; 
-            margin: 20px auto; 
-            max-width: 100%; 
-            touch-action: none; 
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-        .controls { text-align: center; margin: 20px 0; }
-        .btn { 
-            background: linear-gradient(135deg, #00ff88, #00ffff); 
-            color: #000; 
-            border: none; 
-            padding: 14px 30px; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            margin: 8px; 
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            transition: 0.2s;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
-        }
-        .score { font-size: 1.8rem; color: #ff00ff; text-align: center; margin: 15px 0; text-shadow: 0 0 10px #ff00ff; font-weight: bold;}
-           
-        /* ABOUT US SECTION */
-        .about { 
-            background: rgba(15, 15, 30, 0.8); 
-            margin: 60px auto; 
-            padding: 40px; 
-            border-radius: 20px; 
-            border: 2px solid #ff00ff; 
-            text-align: center; 
-            max-width: 800px;
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.2), inset 0 0 20px rgba(255, 0, 255, 0.05);
-        }
-        .about h2 {
-            text-shadow: 0 0 12px #ff00ff;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-        input { padding: 12px; font-size: 1.3rem; width: 120px; text-align: center; background: #151525; color: #00ff88; border: 2px solid #00ff88; border-radius: 10px; box-shadow: 0 0 10px rgba(0,255,136,0.2); }
-        input:focus { outline: none; box-shadow: 0 0 20px #00ff88; }
-
-        /* Memory game extra styling */
-        .memory-grid { display: grid; grid-template-columns: repeat(4, 70px); gap: 10px; justify-content: center; margin: 20px auto; }
-        .memory-card { width: 70px; height: 70px; background: #151525; border: 2px solid #00ffff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; color: transparent; }
-        .memory-card.flipped { color: #fff; background: #202040; border-color: #ff00ff; }
+        body { background: #0b0b1e; color: #fff; font-family: Arial, sans-serif; text-align: center; padding-bottom: 50px; }
+        .header { background: #121232; padding: 30px 10px; border-bottom: 4px solid #00ff88; }
+        .logo { font-size: 2.5rem; font-weight: bold; color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+        .subtitle { color: #ff007f; font-weight: bold; margin-top: 5px; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 10px; }
+        
+        /* GRID FOR TV COMPATIBILITY */
+        .games-grid { display: block; text-align: center; }
+        .game-card { display: inline-block; width: 180px; background: #1a1a3a; border: 2px solid #ff007f; border-radius: 12px; padding: 20px 10px; margin: 10px; cursor: pointer; }
+        .game-card:focus, .game-card:hover { border-color: #00ff88; background: #222255; outline: none; }
+        .game-emoji { font-size: 3rem; margin-bottom: 10px; }
+        .game-name { font-size: 1.1rem; font-weight: bold; }
+        
+        /* MODAL POPUP */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; padding-top: 20px; overflow-y: auto; }
+        .modal.active { display: block; }
+        .game-window { background: #111125; border: 3px solid #00ff88; border-radius: 15px; max-width: 500px; margin: 0 auto; padding: 20px; position: relative; }
+        .close-btn { background: #ff007f; color: #fff; border: none; padding: 10px 20px; font-size: 1.2rem; font-weight: bold; border-radius: 5px; cursor: pointer; margin-bottom: 15px; }
+        
+        /* GAME CONTROLS & BUTTONS */
+        .btn { background: #00ffff; color: #000; border: none; padding: 12px 24px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin: 5px; }
+        .btn:focus, .btn:hover { background: #00ff88; outline: none; }
+        .score { font-size: 1.5rem; color: #ff00ff; margin: 10px 0; font-weight: bold; }
+        
+        /* GAME SPECIFIC GRAPHICS */
+        canvas { background: #000; border: 2px solid #00ffff; display: block; margin: 10px auto; max-width: 100%; }
+        .ttt-box { display: inline-block; width: 80px; height: 80px; background: #1a1a3a; border: 2px solid #00ffff; font-size: 2rem; color: #fff; font-weight: bold; margin: 5px; vertical-align: top; cursor: pointer; }
+        .mem-box { display: inline-block; width: 70px; height: 70px; background: #222; border: 2px solid #ff007f; font-size: 1.8rem; margin: 5px; border-radius: 5px; cursor: pointer; line-height: 70px; vertical-align: top; }
+        
+        .about { background: #121232; border: 2px solid #ff00ff; border-radius: 15px; max-width: 600px; margin: 40px auto; padding: 20px; }
+        input { padding: 10px; font-size: 1.2rem; width: 120px; text-align: center; margin-bottom: 10px; }
     </style>
 </head>
 <body>
+
     <div class="header">
         <div class="logo">ABYU GAME</div>
-        <p>12 Original Games | 100% Apna Code | Zero External Links</p>
+        <div class="subtitle">12 Original Games | 100% Apna Code</div>
     </div>
+
     <div class="container">
-        <div class="stats">🎮 Total Games: <span id="totalGames">12</span></div>
-        <div class="games-grid" id="gamesList"></div>
-    </div>
-    <div class="about">
-        <h2 style="color: #ff00ff; margin-bottom: 25px;">ABOUT US</h2>
-        <p style="color: #00ffff; font-size: 1.3rem; margin: 10px 0; font-weight: bold;">Founder & Developer: Yugank Vishnoi</p>
-        <p style="color: #00ffff; font-size: 1.3rem; margin: 10px 0; font-weight: bold;">Co-Founder: Abhinav Singh</p>
-        <p style="color: #00ffff; font-size: 1.3rem; margin: 10px 0; font-weight: bold;">Investor: Akshat Sharma</p>
-        <p style="margin-top: 30px; color: #666; font-weight: bold; letter-spacing: 1px;">MADE IN INDIA 🇮🇳 | ALL GAMES ORIGINAL</p>
-    </div>
-    <div class="modal" id="gameModal">
-        <div class="game-window">
-            <button class="close-btn" onclick="closeGame()">×</button>
-            <div id="gameContainer"></div>
+        <div class="games-grid">
+            <div class="game-card" tabindex="0" onclick="openGame('snake')"><div class="game-emoji">🐍</div><div class="game-name">Abyu Snake</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('tictactoe')"><div class="game-emoji">⭕</div><div class="game-name">Tic Tac Toe</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('clicker')"><div class="game-emoji">👆</div><div class="game-name">Abyu Clicker</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('memory')"><div class="game-emoji">🧠</div><div class="game-name">Abyu Memory</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('guess')"><div class="game-emoji">🔢</div><div class="game-name">Guess Number</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('dodge')"><div class="game-emoji">🚗</div><div class="game-name">Dodge Car</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('color')"><div class="game-emoji">🎨</div><div class="game-name">Color Match</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('math')"><div class="game-emoji">➕</div><div class="game-name">Math Quiz</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('reaction')"><div class="game-emoji">⚡</div><div class="game-name">Reaction Test</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('rps')"><div class="game-emoji">✂️</div><div class="game-name">Rock Paper</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('flappy')"><div class="game-emoji">🐦</div><div class="game-name">Flappy Bird</div></div>
+            <div class="game-card" tabindex="0" onclick="openGame('breakout')"><div class="game-emoji">🧱</div><div class="game-name">Breakout</div></div>
         </div>
     </div>
 
+    <div class="about">
+        <h3>ABOUT US</h3>
+        <p style="margin: 10px 0; color: #00ffff;">Developer: Yugank Vishnoi</p>
+        <p style="color: #666; font-weight: bold;">MADE IN INDIA 🇮🇳</p>
+    </div>
+
+    <div class="modal" id="gameModal">
+        <button class="close-btn" id="closeBtn" onclick="closeGame()">❌ CLOSE GAME (BACK)</button>
+        <div class="game-window" id="gameContainer"></div>
+    </div>
+
     <script>
-        const games = [
-            {id: 1, name: "Abyu Snake", emoji: "🐍", type: "snake"},
-            {id: 2, name: "Abyu Tic Tac Toe", emoji: "⭕", type: "tictactoe"},
-            {id: 3, name: "Abyu Clicker", emoji: "👆", type: "clicker"},
-            {id: 4, name: "Abyu Memory", emoji: "🧠", type: "memory"},
-            {id: 5, name: "Abyu Guess Number", emoji: "🔢", type: "guess"},
-            {id: 6, name: "Abyu Dodge Car", emoji: "🚗", type: "dodge"},
-            {id: 7, name: "Abyu Color Match", emoji: "🎨", type: "color"},
-            {id: 8, name: "Abyu Math Quiz", emoji: "➕", type: "math"},
-            {id: 9, name: "Abyu Reaction Test", emoji: "⚡", type: "reaction"},
-            {id: 10, name: "Abyu Rock Paper", emoji: "✂️", type: "rps"},
-            {id: 11, name: "Abyu Flappy Bird", emoji: "🐦", type: "flappy"},
-            {id: 12, name: "Abyu Breakout", emoji: "🧱", type: "breakout"}
-        ];
-
-        const grid = document.getElementById('gamesList');
-        games.forEach(game => {
-            const card = document.createElement('div');
-            card.className = 'game-card';
-            card.innerHTML = `<div class="game-emoji">${game.emoji}</div><div class="game-name">${game.name}</div>`;
-            card.onclick = () => openGame(game.type);
-            grid.appendChild(card);
-        });
-
-        let gameInterval = null;
-        let canvas, ctx, score;
+        var gameInterval = null;
+        var score = 0;
 
         function openGame(type) {
             closeGame();
-            document.getElementById('gameModal').classList.add('active');
-            const container = document.getElementById('gameContainer');
-            container.innerHTML = '';
+            document.getElementById('gameModal').className = 'modal active';
+            var container = document.getElementById('gameContainer');
             
             if(type === 'snake') loadSnakeGame(container);
             else if(type === 'tictactoe') loadTicTacToe(container);
@@ -263,173 +95,215 @@
             else if(type === 'rps') loadRPSGame(container);
             else if(type === 'flappy') loadFlappyGame(container);
             else if(type === 'breakout') loadBreakoutGame(container);
+            
+            // Auto focus on first button for TV Remote compatibility
+            setTimeout(function() {
+                var firstBtn = container.querySelector('button, input');
+                if(firstBtn) firstBtn.focus();
+            }, 300);
         }
 
         function closeGame() {
-            document.getElementById('gameModal').classList.remove('active');
+            document.getElementById('gameModal').className = 'modal';
             if(gameInterval) { clearInterval(gameInterval); gameInterval = null; }
             document.onkeydown = null;
         }
 
-        // 1. SNAKE GAME
-        let snake, food, dx, dy;
-        function loadSnakeGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU SNAKE</h2><div class="score">Score: <span id="snakeScore">0</span></div><canvas id="snakeCanvas" width="400" height="400"></canvas><div class="controls"><button class="btn" onclick="startSnake()">START</button></div>`;
+        // 1. SNAKE
+        var sBody, sFood, sDx, sDy;
+        function loadSnakeGame(con) {
+            con.innerHTML = '<h2>ABYU SNAKE</h2><div class="score" id="sScore">Score: 0</div><canvas id="sCan" width="300" height="300"></canvas><div><button class="btn" onclick="sDy=-20;sDx=0;">▲ UP</button><br><button class="btn" onclick="sDx=-20;sDy=0;">◀ LEFT</button><button class="btn" onclick="sDx=20;sDy=0;">▶ RIGHT</button><br><button class="btn" onclick="sDy=20;sDx=0;">▼ DOWN</button></div><br><button class="btn" style="background:#00ff88;" onclick="startSnake()">START GAME</button>';
         }
         function startSnake() {
-            canvas = document.getElementById('snakeCanvas'); ctx = canvas.getContext('2d');
-            snake = [{x: 160, y: 160}, {x: 140, y: 160}]; dx = 20; dy = 0; score = 0;
-            generateFood(); if(gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(() => {
-                if (snake[0].x < 0 || snake[0].x >= 400 || snake[0].y < 0 || snake[0].y >= 400) { clearInterval(gameInterval); alert("Game Over"); return; }
-                const head = {x: snake[0].x + dx, y: snake[0].y + dy}; snake.unshift(head);
-                if(snake[0].x===food.x && snake[0].y===food.y) { score+=10; document.getElementById('snakeScore').innerText=score; generateFood(); } else snake.pop();
-                ctx.fillStyle='#000'; ctx.fillRect(0,0,400,400); ctx.fillStyle='#ff007f'; ctx.fillRect(food.x,food.y,18,18);
-                ctx.fillStyle='#00ff88'; snake.forEach(p=>ctx.fillRect(p.x,p.y,18,18));
-            }, 120);
-            document.onkeydown = e => {
-                if(e.keyCode===37 && dx===0) {dx=-20; dy=0;} if(e.keyCode===38 && dy===0) {dx=0; dy=-20;}
-                if(e.keyCode===39 && dx===0) {dx=20; dy=0;} if(e.keyCode===40 && dy===0) {dx=0; dy=20;}
-            };
+            var can = document.getElementById('sCan'); var ctx = can.getContext('2d');
+            sBody = [{x: 100, y: 100}]; sDx = 20; sDy = 0; score = 0;
+            sFood = {x: 60, y: 60};
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(function() {
+                var head = {x: sBody[0].x + sDx, y: sBody[0].y + sDy};
+                if(head.x<0 || head.x>=300 || head.y<0 || head.y>=300) { clearInterval(gameInterval); alert("Game Over! Score: "+score); return; }
+                sBody.unshift(head);
+                if(head.x === sFood.x && head.y === sFood.y) { score += 10; document.getElementById('sScore').innerText = "Score: "+score; sFood={x:Math.floor(Math.random()*15)*20, y:Math.floor(Math.random()*15)*20}; } else { sBody.pop(); }
+                ctx.fillStyle = '#000'; ctx.fillRect(0,0,300,300);
+                ctx.fillStyle = '#ff007f'; ctx.fillRect(sFood.x, sFood.y, 18, 18);
+                ctx.fillStyle = '#00ff88'; for(var i=0; i<sBody.length; i++) ctx.fillRect(sBody[i].x, sBody[i].y, 18, 18);
+            }, 200);
         }
-        function generateFood() { food = {x: Math.floor(Math.random()*20)*20, y: Math.floor(Math.random()*20)*20}; }
 
         // 2. TIC TAC TOE
-        function loadTicTacToe(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU TIC TAC TOE</h2><div class="score" id="tttStatus">Turn: X</div><div style="display:grid;grid-template-columns:repeat(3,80px);gap:10px;justify-content:center;margin:20px 0;" id="b">${Array(9).fill(0).map((_,i)=>`<button onclick="playTTT(this,${i})" style="width:80px;height:80px;background:#151525;border:2px solid #00ffff;font-size:2rem;color:#fff;font-weight:bold;cursor:pointer;border-radius:10px;"></button>`).join('')}</div>`;
-            window.tttB = Array(9).fill(''); window.tttP = 'X';
+        var tttGrid, tttTurn;
+        function loadTicTacToe(con) {
+            tttGrid = ["","","","","","","","",""]; tttTurn = "X";
+            var html = '<h2>TIC TAC TOE</h2><div class="score" id="tStatus">Turn: X</div><div style="max-width:300px; margin:0 auto;">';
+            for(var i=0; i<9; i++) { html += '<button class="ttt-box" id="tb'+i+'" onclick="clickTTT('+i+')"></button>'; if((i+1)%3===0) html+='<br>'; }
+            html += '</div><br><button class="btn" onclick="openGame(\'tictactoe\')">RESET</button>';
+            con.innerHTML = html;
         }
-        window.playTTT = function(b,i) {
-            if(window.tttB[i] || document.getElementById('tttStatus').innerText.includes('Wins')) return;
-            window.tttB[i] = window.tttP; b.innerText = window.tttP; b.style.color = window.tttP === 'X' ? '#ff007f' : '#00ff88';
-            let wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            if(wins.some(w=>w.every(idx=>window.tttB[idx]===window.tttP))) { document.getElementById('tttStatus').innerText = `🎉 ${window.tttP} Wins!`; return; }
-            if(!window.tttB.includes('')) { document.getElementById('tttStatus').innerText = "🤝 Draw!"; return; }
-            window.tttP = window.tttP === 'X' ? 'O' : 'X'; document.getElementById('tttStatus').innerText = "Turn: " + window.tttP;
+        window.clickTTT = function(i) {
+            if(tttGrid[i] !== "" || document.getElementById('tStatus').innerText.indexOf('Wins') !== -1) return;
+            tttGrid[i] = tttTurn;
+            var btn = document.getElementById('tb'+i); btn.innerText = tttTurn;
+            btn.style.color = tttTurn === "X" ? "#ff007f" : "#00ff88";
+            var w = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for(var j=0; j<w.length; j++) {
+                if(tttGrid[w[j][0]]===tttTurn && tttGrid[w[j][1]]===tttTurn && tttGrid[w[j][2]]===tttTurn) { document.getElementById('tStatus').innerText = "🎉 " + tttTurn + " Wins!"; return; }
+            }
+            if(tttGrid.indexOf("") === -1) { document.getElementById('tStatus').innerText = "🤝 Draw!"; return; }
+            tttTurn = tttTurn === "X" ? "O" : "X"; document.getElementById('tStatus').innerText = "Turn: " + tttTurn;
         };
 
-        // 3. CLICKER GAME
-        function loadClickerGame(container) {
-            score = 0; container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU CLICKER</h2><div class="score" id="cScore">Clicks: 0</div><div style="text-align:center;"><button class="btn" style="padding:40px 60px;font-size:2rem;border-radius:50%;" onclick="score++;document.getElementById('cScore').innerText='Clicks: '+score;">TAP!</button></div>`;
+        // 3. CLICKER
+        function loadClickerGame(con) {
+            score = 0;
+            con.innerHTML = '<h2>ABYU CLICKER</h2><div class="score" id="clScore">Clicks: 0</div><button class="btn" style="padding:30px; font-size:1.5rem;" onclick="score++; document.getElementById(\'clScore\').innerText=\'Clicks: \'+score;">TAP HERE!</button>';
         }
 
         // 4. MEMORY GAME
-        function loadMemoryGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU MEMORY</h2><div class="memory-grid">${Array(16).fill(0).map((_,i)=>`<div class="memory-card" id="mc${i}" onclick="flipMC(${i})"></div>`).join('')}</div>`;
-            let emojis = ['🍎','🍎','🍌','🍌','🍇','🍇','🍊','🍊','🍒','🍒','🍉','🍉','🥑','🥑','🍕','🍕'].sort(()=>Math.random()-0.5);
-            window.mcArr = emojis; window.flippedMC = []; window.matchedMC = 0;
+        var memCards, memFlipped, memMatches;
+        function loadMemoryGame(con) {
+            memCards = ['🍎','🍎','🍌','🍌','🍇','🍇','🍊','🍊','🍒','🍒','🍉','🍉'].sort(function(){return Math.random()-0.5});
+            memFlipped = []; memMatches = 0;
+            var html = '<h2>ABYU MEMORY</h2><div style="max-width:320px; margin:0 auto;">';
+            for(var i=0; i<12; i++) { html += '<button class="mem-box" id="mb'+i+'" onclick="clickMem('+i+')">?</button>'; if((i+1)%4===0) html+='<br>'; }
+            con.innerHTML = html + '</div>';
         }
-        window.flipMC = function(i) {
-            let el = document.getElementById('mc'+i); if(el.classList.contains('flipped') || window.flippedMC.length>=2) return;
-            el.innerText = window.mcArr[i]; el.classList.add('flipped'); window.flippedMC.push({i, el});
-            if(window.flippedMC.length === 2) {
-                if(window.flippedMC[0].el.innerText === window.flippedMC[1].el.innerText) { window.matchedMC+=2; window.flippedMC=[]; if(window.matchedMC===16) alert('🎉 You Won!'); }
-                else { setTimeout(()=>{ window.flippedMC.forEach(item=>{item.el.innerText=''; item.el.classList.remove('flipped');}); window.flippedMC=[]; },1000); }
+        window.clickMem = function(i) {
+            var btn = document.getElementById('mb'+i);
+            if(btn.innerText !== "?" || memFlipped.length >= 2) return;
+            btn.innerText = memCards[i]; btn.style.background = "#333";
+            memFlipped.push({idx: i, btn: btn});
+            if(memFlipped.length === 2) {
+                if(memCards[memFlipped[0].idx] === memCards[memFlipped[1].idx]) { memMatches+=2; memFlipped = []; if(memMatches===12) alert("🎉 You Won!"); }
+                else { setTimeout(function(){ memFlipped[0].btn.innerText="?"; memFlipped[0].btn.style.background="#222"; memFlipped[1].btn.innerText="?"; memFlipped[1].btn.style.background="#222"; memFlipped=[]; }, 1000); }
             }
         };
 
         // 5. GUESS NUMBER
-        function loadGuessGame(container) {
-            window.guessTarget = Math.floor(Math.random()*100)+1;
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU GUESS NUMBER</h2><p style="text-align:center;margin:15px;color:#ff007f;">Guess between 1 to 100</p><div style="text-align:center;"><input type="number" id="gInput"><br><button class="btn" onclick="checkGuess()">Check</button><p id="gHint" style="margin-top:15px;font-size:1.2rem;color:#00ff88;"></p></div>`;
+        var guessNum;
+        function loadGuessGame(con) {
+            guessNum = Math.floor(Math.random()*50)+1;
+            con.innerHTML = '<h2>GUESS NUMBER (1-50)</h2><br><input type="number" id="gInp"><br><button class="btn" onclick="checkG()">CHECK</button><h3 id="gRes" style="margin-top:15px; color:#00ff88;"></h3>';
         }
-        window.checkGuess = function() {
-            let val = parseInt(document.getElementById('gInput').value); let hint = document.getElementById('gHint');
-            if(val === window.guessTarget) hint.innerText = "🎉 Correct! You Guessed it.";
-            else if(val > window.guessTarget) hint.innerText = "📉 Too High! Try lower.";
-            else hint.innerText = "📈 Too Low! Try higher.";
+        window.checkG = function() {
+            var val = parseInt(document.getElementById('gInp').value);
+            var res = document.getElementById('gRes');
+            if(val === guessNum) res.innerText = "🎉 Correct! You Got It.";
+            else if(val > guessNum) res.innerText = "📈 Too High! Try Lower.";
+            else res.innerText = "📉 Too Low! Try Higher.";
         };
 
         // 6. DODGE CAR
-        function loadDodgeGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU DODGE CAR</h2><div class="score" id="dScore">Score: 0</div><canvas id="dodgeCanvas" width="300" height="400"></canvas><div style="text-align:center;"><button class="btn" onclick="window.carX=Math.max(10,window.carX-30)">◀</button><button class="btn" onclick="window.carX=Math.min(250,window.carX+30)">▶</button></div>`;
-            canvas = document.getElementById('dodgeCanvas'); ctx = canvas.getContext('2d');
-            window.carX = 135; let obsX = Math.random()*260; let obsY = 0; score = 0;
-            gameInterval = setInterval(()=>{
-                obsY += 6; if(obsY > 400) { obsY=0; obsX=Math.random()*260; score++; document.getElementById('dScore').innerText="Score: "+score; }
-                if(obsY>350 && obsY<390 && window.carX<obsX+30 && window.carX+40>obsX) { clearInterval(gameInterval); alert("💥 Crashed! Score: "+score); return; }
-                ctx.fillStyle='#000'; ctx.fillRect(0,0,300,400); ctx.fillStyle='#00ff88'; ctx.fillRect(window.carX,350,40,40); ctx.fillStyle='#ff007f'; ctx.fillRect(obsX,obsY,30,30);
-            }, 30);
+        var dCarX, dObsX, dObsY;
+        function loadDodgeGame(con) {
+            con.innerHTML = '<h2>DODGE CAR</h2><div class="score" id="dScore">Score: 0</div><canvas id="dCan" width="240" height="300"></canvas><div><button class="btn" onclick="dCarX=Math.max(10,dCarX-40)">◀ LEFT</button><button class="btn" onclick="dCarX=Math.min(190,dCarX+40)">RIGHT ▶</button></div><br><button class="btn" style="background:#00ff88;" onclick="startDodge()">START</button>';
+        }
+        function startDodge() {
+            var can = document.getElementById('dCan'); var ctx = can.getContext('2d');
+            dCarX = 100; dObsX = Math.random()*200; dObsY = 0; score = 0;
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(function() {
+                dObsY += 10; if(dObsY > 300) { dObsY = 0; dObsX = Math.random()*200; score++; document.getElementById('dScore').innerText="Score: "+score; }
+                if(dObsY>240 && dObsY<280 && dCarX < dObsX+30 && dCarX+40 > dObsX) { clearInterval(gameInterval); alert("💥 Crashed! Score: "+score); return; }
+                ctx.fillStyle='#000'; ctx.fillRect(0,0,240,300);
+                ctx.fillStyle='#00ff88'; ctx.fillRect(dCarX,250,40,40); // Car
+                ctx.fillStyle='#ff007f'; ctx.fillRect(dObsX,dObsY,30,30); // Enemy
+            }, 50);
         }
 
         // 7. COLOR MATCH
-        function loadColorGame(container) {
-            let colors = ['red', 'blue', 'green', 'yellow'];
-            window.cTarget = colors[Math.floor(Math.random()*4)];
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU COLOR MATCH</h2><p style="text-align:center;font-size:1.5rem;margin:20px 0;">Click on: <span style="color:${window.cTarget};font-weight:bold;text-transform:uppercase;">${colors[Math.floor(Math.random()*4)]}</span></p><div style="text-align:center;">${colors.map(c=>`<button onclick="checkColor('${c}')" class="btn" style="background:${c};width:80px;height:50px;border:2px solid #fff;"></button>`).join('')}</div><p id="cStatus" style="text-align:center;margin-top:15px;font-size:1.2rem;"></p>`;
+        var colTarget;
+        function loadColorGame(con) {
+            var colors = ['red', 'blue', 'green', 'yellow'];
+            colTarget = colors[Math.floor(Math.random()*4)];
+            con.innerHTML = '<h2>COLOR MATCH</h2><p style="font-size:1.3rem; margin:10px;">Click on color: <span style="color:'+colTarget+'; font-weight:bold;">'+colors[Math.floor(Math.random()*4)]+'</span></p>' +
+                colors.map(function(c){ return '<button class="btn" style="background:'+c+'; width:70px; height:40px;" onclick="checkCol(\''+c+'\')"></button>'; }).join('') + '<h3 id="colStatus" style="margin-top:15px;"></h3>';
         }
-        window.checkColor = function(c) {
-            document.getElementById('cStatus').innerText = c===window.cTarget ? "🎉 Correct Match!" : "❌ Wrong Color!";
-            setTimeout(()=>loadColorGame(document.getElementById('gameContainer')), 1000);
+        window.checkCol = function(c) {
+            document.getElementById('colStatus').innerText = c===colTarget ? "🎉 Correct!" : "❌ Wrong!";
+            setTimeout(function(){ loadColorGame(document.getElementById('gameContainer')); }, 1000);
         };
 
         // 8. MATH QUIZ
-        function loadMathGame(container) {
-            let a = Math.floor(Math.random()*20)+5, b = Math.floor(Math.random()*20)+5; window.mathAns = a + b;
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU MATH QUIZ</h2><p style="text-align:center;font-size:1.5rem;margin:20px;">What is ${a} + ${b} ?</p><div style="text-align:center;"><input type="number" id="mInput"><br><button class="btn" onclick="checkMath()">Submit</button><p id="mStatus" style="margin-top:15px;font-size:1.2rem;"></p></div>`;
+        var mathAns;
+        function loadMathGame(con) {
+            var n1 = Math.floor(Math.random()*10)+2; var n2 = Math.floor(Math.random()*10)+2; mathAns = n1 + n2;
+            con.innerHTML = '<h2>MATH QUIZ</h2><p style="font-size:1.5rem; margin:10px;">What is '+n1+' + '+n2+' ?</p><input type="number" id="mInp"><br><button class="btn" onclick="checkM()">SUBMIT</button><h3 id="mRes" style="margin-top:15px;"></h3>';
         }
-        window.checkMath = function() {
-            let val = parseInt(document.getElementById('mInput').value);
-            document.getElementById('mStatus').innerText = val===window.mathAns ? "🎉 Correct!" : "❌ Wrong Answer!";
-            setTimeout(()=>loadMathGame(document.getElementById('gameContainer')), 1000);
+        window.checkM = function() {
+            var v = parseInt(document.getElementById('mInp').value);
+            document.getElementById('mRes').innerText = v===mathAns ? "🎉 Correct!" : "❌ Wrong Answer!";
+            setTimeout(function(){ loadMathGame(document.getElementById('gameContainer')); }, 1000);
         };
 
         // 9. REACTION TEST
-        function loadReactionGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU REACTION TEST</h2><div id="rtBox" onclick="clickRT()" style="width:250px;height:250px;background:#ff007f;margin:30px auto;border-radius:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;font-weight:bold;">Wait for Green...</div>`;
-            window.rtState = 'wait';
-            window.rtTimeout = setTimeout(()=>{
-                let box = document.getElementById('rtBox'); if(box) { box.style.background='#00ff88'; box.innerText='CLICK NOW!!!'; window.rtState='click'; window.rtTime=Date.now(); }
-            }, Math.random()*3000 + 2000);
+        var rtState, rtTime, rtTimeout;
+        function loadReactionGame(con) {
+            con.innerHTML = '<h2>REACTION TEST</h2><button id="rtBox" class="btn" style="background:#ff007f; width:200px; height:150px; margin:20px; font-size:1.3rem;" onclick="clickRT()">Wait for Green...</button>';
+            rtState = "wait";
+            rtTimeout = setTimeout(function() {
+                var box = document.getElementById('rtBox');
+                if(box) { box.style.background = "#00ff88"; box.innerText = "CLICK NOW!!!"; rtState = "click"; rtTime = Date.now(); }
+            }, Math.random()*2000 + 2000);
         }
         window.clickRT = function() {
-            let box = document.getElementById('rtBox');
-            if(window.rtState === 'wait') { clearTimeout(window.rtTimeout); box.innerText="Too Early! Try Again."; }
-            else if(window.rtState === 'click') { box.innerText = `Result: ${Date.now() - window.rtTime} ms!`; window.rtState='done'; }
+            var box = document.getElementById('rtBox');
+            if(rtState === "wait") { clearTimeout(rtTimeout); box.innerText = "Too Early! Resetting..."; setTimeout(function(){ loadReactionGame(document.getElementById('gameContainer')); }, 1000); }
+            else if(rtState === "click") { box.innerText = "Time: " + (Date.now() - rtTime) + " ms!"; rtState = "done"; }
         };
 
         // 10. ROCK PAPER SCISSORS
-        function loadRPSGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU ROCK PAPER</h2><div style="text-align:center;margin:30px 0;"><button class="btn" onclick="playRPS('✊')">✊ Rock</button><button class="btn" onclick="playRPS('✋')">✋ Paper</button><button class="btn" onclick="playRPS('✂️')">✂️ Scissors</button></div><p id="rpsResult" style="text-align:center;font-size:1.3rem;color:#ff00ff;font-weight:bold;"></p>`;
+        function loadRPSGame(con) {
+            con.innerHTML = '<h2>ROCK PAPER SCISSORS</h2><br><button class="btn" onclick="playRPS(\'✊\')">✊ Rock</button><button class="btn" onclick="playRPS(\'✋\')">✋ Paper</button><button class="btn" onclick="playRPS(\'✂️\')">✂️ Scissors</button><h3 id="rpsRes" style="margin-top:20px; color:#ff00ff;"></h3>';
         }
         window.playRPS = function(p) {
-            let opts = ['✊', '✋', '✂️']; let c = opts[Math.floor(Math.random()*3)]; let res = "";
-            if(p===c) res = "🤝 It's a Tie!";
-            else if((p==='✊'&&c==='✂️') || (p==='✋'&&c==='✊') || (p==='✂️'&&c==='✋')) res = "🎉 You Win!";
-            else res = "🤖 CPU Wins!";
-            document.getElementById('rpsResult').innerHTML = `You: ${p} | CPU: ${c}<br><br>${res}`;
+            var o = ['✊', '✋', '✂️']; var c = o[Math.floor(Math.random()*3)]; var r = "";
+            if(p===c) r = "🤝 Tie!";
+            else if((p==='✊'&&c==='✂️') || (p==='✋'&&c==='✊') || (p==='✂️'&&c==='✋')) r = "🎉 You Win!";
+            else r = "🤖 CPU Wins!";
+            document.getElementById('rpsRes').innerHTML = "You: "+p+" | CPU: "+c+"<br><br>"+r;
         };
 
         // 11. FLAPPY BIRD
-        function loadFlappyGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU FLAPPY BIRD</h2><div class="score" id="fScore">Score: 0</div><canvas id="flappyCanvas" width="320" height="400"></canvas><div style="text-align:center;"><button class="btn" onclick="window.birdV=-6">JUMP</button></div>`;
-            canvas = document.getElementById('flappyCanvas'); ctx = canvas.getContext('2d');
-            window.birdY = 200; window.birdV = 0; let pipeX = 320; let pipeGap = 120; let pipeTop = Math.random()*150+50; score = 0;
-            gameInterval = setInterval(()=>{
-                window.birdV += 0.4; window.birdY += window.birdV; pipeX -= 3;
-                if(pipeX < -50) { pipeX=320; pipeTop=Math.random()*150+50; score++; document.getElementById('fScore').innerText="Score: "+score; }
-                if(window.birdY>400 || window.birdY<0 || (pipeX<50 && pipeX>10 && (window.birdY<pipeTop || window.birdY>pipeTop+pipeGap))) { clearInterval(gameInterval); alert("Game Over! Score: "+score); return; }
-                ctx.fillStyle='#000'; ctx.fillRect(0,0,320,400); ctx.fillStyle='#00ffff'; ctx.fillRect(30,window.birdY,20,20);
-                ctx.fillStyle='#ff007f'; ctx.fillRect(pipeX,0,40,pipeTop); ctx.fillRect(pipeX,pipeTop+pipeGap,40,400);
-            }, 25);
+        var bY, bV, fPipeX, fPipeTop;
+        function loadFlappyGame(con) {
+            con.innerHTML = '<h2>FLAPPY BIRD</h2><div class="score" id="fScore">Score: 0</div><canvas id="fCan" width="240" height="300"></canvas><button class="btn" style="width:80%; padding:15px;" onclick="bV=-5">JUMP 🚀</button><br><button class="btn" style="background:#00ff88; margin-top:5px;" onclick="startFlappy()">START</button>';
+        }
+        function startFlappy() {
+            var can = document.getElementById('fCan'); var ctx = can.getContext('2d');
+            bY = 120; bV = 0; fPipeX = 240; fPipeTop = 80; score = 0;
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(function() {
+                bV += 0.5; bY += bV; fPipeX -= 4;
+                if(fPipeX < -40) { fPipeX = 240; fPipeTop = Math.floor(Math.random()*120)+40; score++; document.getElementById('fScore').innerText="Score: "+score; }
+                if(bY>300 || bY<0 || (fPipeX<50 && fPipeX>10 && (bY<fPipeTop || bY>fPipeTop+90))) { clearInterval(gameInterval); alert("Game Over! Score: "+score); return; }
+                ctx.fillStyle='#000'; ctx.fillRect(0,0,240,300);
+                ctx.fillStyle='#00ffff'; ctx.fillRect(30,bY,16,16); // Bird
+                ctx.fillStyle='#ff007f'; ctx.fillRect(fPipeX, 0, 30, fPipeTop); ctx.fillRect(fPipeX, fPipeTop+90, 30, 300); // Pipes
+            }, 40);
         }
 
         // 12. BREAKOUT
-        function loadBreakoutGame(container) {
-            container.innerHTML = `<h2 style="color:#00ffff;text-align:center;">ABYU BREAKOUT</h2><canvas id="boCanvas" width="400" height="350"></canvas><div style="text-align:center;"><button class="btn" onclick="window.padX=Math.max(0,window.padX-25)">◀</button><button class="btn" onclick="window.padX=Math.min(330,window.padX+25)">▶</button></div>`;
-            canvas = document.getElementById('boCanvas'); ctx = canvas.getContext('2d');
-            window.padX = 165; let bx = 200, by = 200, bdx = 3, bdy = -3;
-            let bricks = []; for(let r=0; r<3; r++) for(let c=0; c<6; c++) bricks.push({x:c*65+10, y:r*25+40, s:1});
-            gameInterval = setInterval(()=>{
-                bx+=bdx; by+=bdy; if(bx<0 || bx>400) bdx=-bdx; if(by<0) bdy=-bdy;
-                if(by>320 && bx>window.padX && bx<window.padX+70) bdy=-bdy;
-                if(by>350) { clearInterval(gameInterval); alert("Game Over"); return; }
-                bricks.forEach(b=>{ if(b.s && bx>b.x && bx<b.x+60 && by>b.y && by<b.y+20) { b.s=0; bdy=-bdy; } });
-                ctx.fillStyle='#000'; ctx.fillRect(0,0,400,350); ctx.fillStyle='#00ff88'; ctx.fillRect(window.padX,330,70,12); ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(bx,by,7,0,Math.PI*2); ctx.fill();
-                ctx.fillStyle='#ff007f'; bricks.forEach(b=>{ if(b.s) ctx.fillRect(b.x,b.y,60,20); });
-                if(bricks.every(b=>!b.s)) { clearInterval(gameInterval); alert("🎉 You Won!"); }
-            }, 20);
+        var brPadX, brBx, brBy, brBdx, brBdy, brList;
+        function loadBreakoutGame(con) {
+            con.innerHTML = '<h2>ABYU BREAKOUT</h2><canvas id="bCan" width="300" height="240"></canvas><div><button class="btn" onclick="brPadX=Math.max(0,brPadX-30)">◀ LEFT</button><button class="btn" onclick="brPadX=Math.min(230,brPadX+30)">RIGHT ▶</button></div><br><button class="btn" style="background:#00ff88;" onclick="startBreakout()">START</button>';
+        }
+        function startBreakout() {
+            var can = document.getElementById('bCan'); var ctx = can.getContext('2d');
+            brPadX = 115; brBx = 150; brBy = 150; brBdx = 3; brBdy = -3; brList = [];
+            for(var r=0; r<2; r++) for(var c=0; c<5; c++) brList.push({x: c*55+15, y: r*20+30, s: 1});
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(function() {
+                brBx += brBdx; brBy += brBdy;
+                if(brBx<0 || brBx>300) brBdx = -brBdx; if(brBy<0) brBdy = -brBdy;
+                if(brBy>210 && brBx>brPadX && brBx<brPadX+70) brBdy = -brBdy;
+                if(brBy>240) { clearInterval(gameInterval); alert("Game Over"); return; }
+                for(var i=0; i<brList.length; i++) { var b = brList[i]; if(b.s && brBx>b.x && brBx<b.x+50 && brBy>b.y && brBy<b.y+15) { b.s = 0; brBdy = -brBdy; break; } }
+                ctx.fillStyle='#000'; ctx.fillRect(0,0,300,240);
+                ctx.fillStyle='#00ff88'; ctx.fillRect(brPadX,220,70,10); // Paddle
+                ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(brBx,brBy,6,0,Math.PI*2); ctx.fill(); // Ball
+                ctx.fillStyle='#ff007f'; for(var i=0; i<brList.length; i++) { if(brList[i].s) ctx.fillRect(brList[i].x, brList[i].y, 50, 15); }
+            }, 40);
         }
     </script>
 </body>
-</html>   
+</html>
